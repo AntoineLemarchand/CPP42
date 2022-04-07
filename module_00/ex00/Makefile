@@ -24,7 +24,7 @@ endef
 
 SRCS			= megaphone.cpp
 
-OBJS			= $(SRCS:.c=.o)
+OBJS			= $(SRCS:.cpp=.o)
 
 NAME			= megaphone
 
@@ -38,15 +38,19 @@ CPPFLAGS		= -Iincludes
 
 LIBS			= -lpthread
 
-%.o : %.c
-				$(call compiling,$<,$(<:.c=.o),0)
+%.o : %.cpp
+				$(call compiling,$<,$(<:.cpp=.o),0)
 
 ${NAME}:		$(OBJS)
 				$(call finishing,$(NAME), $(OBJS))
 
 all:			$(NAME)
 
-fclean:
+clean:
+				@echo -n Removing
+				$(call removing,$(OBJS))
+
+fclean:			clean
 				@echo -n Removing
 				$(call removing,$(NAME))
 
