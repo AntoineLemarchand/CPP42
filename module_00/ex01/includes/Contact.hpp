@@ -6,61 +6,18 @@
 class	Contact
 {
 	public:
-		Contact(void)
-		{
-			std::cout << "hello world ! i'm contact" << std::endl;
-		};
-
+		Contact(void);
 		~Contact(void);
-		{
-			std::cout << "bye world ! i'm contact" << std::endl;
-		};
-
-		Contact(Contact &contact)
-		{
-			contact.setFirstName(this->first);
-			contact.setLastName(this->last);
-			contact.setNickName(this->nick);
-			contact.setPhone(this->phone);
-			contact.setSecret(this->secret);
-		};
-
-		Contact & operator = (Contact &contact)
-		{
-			contact.setFirstName(this->first);
-			contact.setLastName(this->last);
-			contact.setNickName(this->nick);
-			contact.setPhone(this->phone);
-			contact.setSecret(this->secret);
-			return (contact);
-		};
-
-		void	setFirstName(std::string val)
-		{
-			this->first = val;
-		};
-
-		void	setLastName(std::string val)
-		{
-			this->last = val;
-		};
-
-		void	setNickName(std::string val)
-		{
-			this->nick = val;
-		};
-
-		void	setPhone(std::string val)
-		{
-			this->phone = val;
-		};
-
-		void	setSecret(std::string val)
-		{
-			this->secret = val;
-		};
+		Contact(Contact &contact);
+		Contact & operator = (Contact &contact);
+		void	setFirstName(std::string val);
+		void	setLastName(std::string val);
+		void	setNickName(std::string val);
+		void	setPhone(std::string val);
+		void	setSecret(std::string val);
 
 	private:
+		int			init;
 		std::string	first;
 		std::string	last;
 		std::string	nick;
