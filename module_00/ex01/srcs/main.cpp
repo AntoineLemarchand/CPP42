@@ -4,11 +4,12 @@
 
 static std::string	getprompt(std::string prompt)
 {
-	std::string	output;
+	std::string	input;
 
 	std::cout << prompt;
-	std::getline(std::cin, output);
-	return (output);
+	std::getline(std::cin, input);
+	return (input);
+
 }
 
 static std::string	getNewVal(std::string prompt)
@@ -19,7 +20,9 @@ static std::string	getNewVal(std::string prompt)
 	while (empty)
 	{
 		ret = getprompt(prompt);
-		if (ret.empty())
+		if (std::cin.eof() == 1)
+			break;
+		else if (ret.empty())
 			std::cout << "Please do not input empty field" << std::endl;
 		else 
 			empty = false;
@@ -32,10 +35,20 @@ static Contact	newContact(void)
 	Contact	ret;
 
 	ret.setFirstName(getNewVal("First Name     > "));
+	if (std::cin.eof() == 1)
+		return (ret);
 	ret.setLastName(getNewVal("Last Name      > "));
+	if (std::cin.eof() == 1)
+		return (ret);
 	ret.setNickName(getNewVal("Nickname       > "));
+	if (std::cin.eof() == 1)
+		return (ret);
 	ret.setPhone(getNewVal("Phone number   > "));
+	if (std::cin.eof() == 1)
+		return (ret);
 	ret.setSecret(getNewVal("Darkest secret > "));
+	if (std::cin.eof() == 1)
+		return (ret);
 	return (ret);
 }
 
@@ -107,17 +120,17 @@ int	main()
 
 	while (1)
 	{
-		input = getprompt("SuperAwesomePhoneBook > ");
-		if (!input.compare("EXIT") || input.size() == 0)
+		if (std::cin.eof() == 1 || !input.compare("EXIT"))
 			break;
-		else if (!input.compare("ADD"))
+		input = getprompt("APB > ");
+		if (!input.compare("ADD"))
 			phonebook.setContact(newContact());
 		else if (!input.compare("SEARCH"))
 		{
 			printList(phonebook);
 			selectContact(phonebook);
 		}
-		else
+		else if (!input.empty())
 		{
 			std::cout << "Usage:" << std::endl;
 			std::cout << "\tADD: add a contact" << std::endl;
