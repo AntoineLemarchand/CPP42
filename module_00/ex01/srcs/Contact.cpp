@@ -12,7 +12,7 @@ Contact::~Contact(void)
 
 Contact::Contact(const Contact &contact)
 {
-	this->init = true;
+	this->init = contact.init;
 	this->first = contact.first;
 	this->last = contact.last;
 	this->nick = contact.nick;
@@ -39,21 +39,25 @@ void	Contact::setFirstName(std::string val)
 
 void	Contact::setLastName(std::string val)
 {
+	this->init = true;
 	this->last = val;
 }
 
 void	Contact::setNickName(std::string val)
 {
+	this->init = true;
 	this->nick = val;
 }
 
 void	Contact::setPhone(std::string val)
 {
+	this->init = true;
 	this->phone = val;
 }
 
 void	Contact::setSecret(std::string val)
 {
+	this->init = true;
 	this->secret = val;
 }
 

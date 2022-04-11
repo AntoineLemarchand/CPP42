@@ -3,13 +3,16 @@
 #include "Contact.hpp"
 
 PhoneBook::PhoneBook()
-{}
+{
+	this->contactNum = 0;
+}
 
 PhoneBook::~PhoneBook()
 {}
 
 PhoneBook::PhoneBook(const PhoneBook& phonebook)
 {
+	this->contactNum = phonebook.contactNum;
 	for (int i = 0; i < 8; i++)
 	{
 		if (this->contacts[i].getInit() == true)
@@ -19,6 +22,7 @@ PhoneBook::PhoneBook(const PhoneBook& phonebook)
 
 PhoneBook& PhoneBook::operator = (const PhoneBook& phonebook)
 {
+	this->contactNum = phonebook.contactNum;
 	for (int i = 0; i < 8; i++)
 		this->setContact(phonebook.getContact(i));
 	return (*this);

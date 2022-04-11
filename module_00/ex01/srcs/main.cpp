@@ -27,28 +27,77 @@ static std::string	getNewVal(std::string prompt)
 	return (ret);
 }
 
-static void	newContact(PhoneBook phonebook)
+static Contact	newContact(void)
 {
 	Contact	ret;
 
-	std::string input;
 	ret.setFirstName(getNewVal("First Name     > "));
 	ret.setLastName(getNewVal("Last Name      > "));
 	ret.setNickName(getNewVal("Nickname       > "));
 	ret.setPhone(getNewVal("Phone number   > "));
 	ret.setSecret(getNewVal("Darkest secret > "));
-	phonebook.setContact(ret);
+	return (ret);
 }
 
-static void	displaysearch(PhoneBook phonebook)
+static void	printcell(std::string content)
 {
-	std::cout << "| index    | firstName| lastName | nickName |" << std::endl;
+	std::cout << "|";
+	for (unsigned int i = 0; i < content.size() && i < 9; i++)
+		std::cout << content[i];
+
+	if (content.size() == 10)
+		std::cout << content[9];
+	else if (content.size() > 10)
+		std::cout << ".";
+	int diff = 10 - content.size();
+	while (diff > 0)
+	{
+		std::cout << " ";
+		diff--;
+	}
+}
+
+static void printList(PhoneBook& phonebook)
+{
+	std::cout << "/-------------------------------------------\\" << std::endl;
+	std::cout << "| index    |firstName |lastName  |nickName  |" << std::endl;
 	for (int i = 0; i < 8; i++)
 	{
 		if (phonebook.getContact(i).getInit())
 		{
+			std::cout << "| " << i + 1 << "        ";
+			printcell(phonebook.getContact(i).getFirstName());
+			printcell(phonebook.getContact(i).getLastName());
+			printcell(phonebook.getContact(i).getNickName());
+			std::cout << "|" << std::endl;
 		}
 	}
+	std::cout << "\\-------------------------------------------/" << std::endl;
+}
+
+static void selectContact(PhoneBook& phonebook)
+{
+	std::string input;
+	Contact		contact;
+
+	input = getprompt("index: ");
+	if (input.size() > 1 || input[0] > '8' || input[0] < '0')
+	{
+		std::cout << "syntax error: nonexistant index" << std::endl;
+		return ;
+	}
+	else
+		contact = phonebook.getContact(input[0] - '0' - 1);
+	if (contact.getInit() == false)
+	{
+		std::cout << "syntax error: nonexistant index" << std::endl;
+		return ;
+	}
+	std::cout << "First name   : " << contact.getFirstName() << std::endl;
+	std::cout << "Last name    : " << contact.getLastName() << std::endl;
+	std::cout << "Nickname     : " << contact.getNickName() << std::endl;
+	std::cout << "Phone number : " << contact.getPhone() << std::endl;
+	std::cout << "Darket secret: " << contact.getSecret() << std::endl;
 }
 
 int	main()
@@ -62,19 +111,18 @@ int	main()
 		if (!input.compare("EXIT") || input.size() == 0)
 			break;
 		else if (!input.compare("ADD"))
-			newContact(phonebook);
+			phonebook.setContact(newContact());
 		else if (!input.compare("SEARCH"))
-			displaysearch(phonebook);
-		for (int i = 0; i < 8; i++)
 		{
-			if (phonebook.getContact(i).getInit())
-			{
-				std::cout << phonebook.getContact(i).getFirstName() << std::endl;
-				std::cout << phonebook.getContact(i).getLastName() << std::endl;
-				std::cout << phonebook.getContact(i).getNickName() << std::endl;
-				std::cout << phonebook.getContact(i).getPhone() << std::endl;
-				std::cout << phonebook.getContact(i).getSecret() << std::endl;
-			}
+			printList(phonebook);
+			selectContact(phonebook);
+		}
+		else
+		{
+			std::cout << "Usage:" << std::endl;
+			std::cout << "\tADD: add a contact" << std::endl;
+			std::cout << "\tSEARCH: search a contact:" << std::endl;
+			std::cout << "\tEXIT: quit the best phonebook in the world" << std::endl;
 		}
 	}
 	return (0);
