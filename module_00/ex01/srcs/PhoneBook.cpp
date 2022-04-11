@@ -2,38 +2,37 @@
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 
-PhoneBook::PhoneBook(void)
+PhoneBook::PhoneBook()
+{}
+
+PhoneBook::~PhoneBook()
+{}
+
+PhoneBook::PhoneBook(const PhoneBook& phonebook)
 {
-	std::cout << "phonebook constructed !" << std::endl;
+	for (int i = 0; i < 8; i++)
+	{
+		if (this->contacts[i].getInit() == true)
+			this->setContact(phonebook.getContact(i));
+	}
 }
 
-PhoneBook::~PhoneBook(void)
-{
-	std::cout << "phonebook destructed !" << std::endl;
-}
-
-PhoneBook::PhoneBook(PhoneBook &phonebook)
+PhoneBook& PhoneBook::operator = (const PhoneBook& phonebook)
 {
 	for (int i = 0; i < 8; i++)
 		this->setContact(phonebook.getContact(i));
-};
-
-PhoneBook& PhoneBook::operator = (PhoneBook &phonebook)
-{
-	for (int i = 0; i < 8; i++)
-		this->setContact(phonebook.getContact(i));
-	return (phonebook);
-};
-
-Contact	PhoneBook::getContact(const int index)
-{
-	return (&this.contacts[index]);
+	return (*this);
 }
 
-void	PhoneBook::setContact(Contact contact)
+Contact	PhoneBook::getContact(int index) const 
+{
+	return (this->contacts[index]);
+}
+
+void	PhoneBook::setContact(const Contact& contact)
 {
 	if (this->contactNum == 8)
 		this->contactNum = 0;
-	this->contacts[this.contactNum] = contact;
+	this->contacts[this->contactNum] = contact;
 	this->contactNum++;
 }

@@ -9,10 +9,10 @@ class	PhoneBook
 	public:
 		PhoneBook(void);
 		~PhoneBook(void);
-		PhoneBook(PhoneBook &phonebook);
-		PhoneBook & operator = (PhoneBook &phonebook);
-		Contact	getContact(int index);
-		void	setContact(class Contact contact);
+		PhoneBook(const PhoneBook &phonebook);
+		PhoneBook & operator = (const PhoneBook &phonebook);
+		Contact	getContact(int index) const;
+		void	setContact(const Contact& contact);
 
 	private:
 		Contact	contacts[8];
