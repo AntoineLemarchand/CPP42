@@ -30,11 +30,11 @@ RM				= rm -f
 
 CC				= g++
 
-CFLAGS			= -Wall -Wextra -Werror -g -fsanitize=address -std=c++98
+CFLAGS			= -Wall -Wextra -Werror -std=c++98
 
-CPPFLAGS		= -I.
+CPPFLAGS		=
 
-LIBS			= -lpthread
+LIBS			=
 
 %.o : %.cpp
 				$(call compiling,$<,$(<:.cpp=.o),0)
