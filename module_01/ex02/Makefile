@@ -20,15 +20,11 @@ define removing
 	@printf '\n'
 endef
 
-SRCS			= $(addprefix srcs/, \
-				  	Zombie.cpp \
-					zombieHorde.cpp \
-					main.cpp \
-					)
+SRCS			= main.cpp
 
 OBJS			= $(SRCS:.cpp=.o)
 
-NAME			= Zombies
+NAME			= HelloBrain
 
 RM				= rm -f
 
@@ -36,9 +32,9 @@ CC				= g++
 
 CFLAGS			= -Wall -Wextra -Werror -g -fsanitize=address -std=c++98
 
-CPPFLAGS		= -Iincludes
+CPPFLAGS		=
 
-LIBS			=
+LIBS			= 
 
 %.o : %.cpp
 				$(call compiling,$<,$(<:.cpp=.o),0)
