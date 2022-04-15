@@ -1,9 +1,31 @@
 #include <iostream>
+#include "Harl.hpp"
 
 void Harl::complain( std::string level )
 {
-	case level:
-		DEBUG
+	void	(Harl::*fct[])( void ) = 
+	{
+		&Harl::debug,
+		&Harl::info,
+		&Harl::warning,
+		&Harl::error
+	};
+	std::string inputs[] = 
+	{
+		"DEBUG",
+		"INFO",
+		"WARNING",
+		"ERROR"
+	};
+
+	for (int i = 0; i < 4; i++)
+		if (!level.compare(inputs[i]))
+		{
+			void (Harl::*select)( void ) = fct[i];
+			(this->*select)();
+			return ;
+		}
+	std::cerr << level << ": Not a valid level" << std::endl;
 }
 
 void Harl::debug( void )
