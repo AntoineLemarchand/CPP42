@@ -1,5 +1,6 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 #include <iostream>
 
 static void	claptus(ClapTrap& C)
@@ -16,6 +17,14 @@ static void	scavtus(ScavTrap& S)
 	std::cout << "HP: " << S.getHP() << " ● ";
 	std::cout << "energy: " << S.getEnergy() << " ● ";
 	std::cout << "Attack: " << S.getAttack() << std::endl;
+}
+
+static void	fragtus(FragTrap& F)
+{
+	std::cout << "name: " << F.getName() << " ● ";
+	std::cout << "HP: " << F.getHP() << " ● ";
+	std::cout << "energy: " << F.getEnergy() << " ● ";
+	std::cout << "Attack: " << F.getAttack() << std::endl;
 }
 
 static void	claptest( void )
@@ -76,8 +85,25 @@ static void	scavtest( void )
 	std::cout << "━━━━━━━━━━━━━━" << std::endl;
 }
 
+static void	fragtest( void )
+{
+	std::cout << "┏━━━━━━━━━━━━━━━━━━━━┓" << std::endl;
+	std::cout << "┃   FRAGTRAP TEST    ┃" << std::endl;
+	std::cout << "┗━━━━━━━━━━━━━━━━━━━━┛" << std::endl;
+
+	FragTrap F1 = FragTrap("FR4G-TP-1");
+	FragTrap F2 = FragTrap("FR4G-TP-2");
+
+	std::cout << "━━━━STATUS━━━━" << std::endl;
+	fragtus(F1);
+	fragtus(F2);
+	std::cout << "━━━━━━━━━━━━━━" << std::endl;
+	F1.highFivesGuys();
+}
+
 int main( void )
 {
 	claptest();
 	scavtest();
+	fragtest();
 }
