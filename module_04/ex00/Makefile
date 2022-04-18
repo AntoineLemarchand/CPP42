@@ -21,9 +21,8 @@ define removing
 endef
 
 SRCS			= $(addprefix srcs/, \
-				  ClapTrap.cpp \
-				  ScavTrap.cpp \
-				  FragTrap.cpp \
+				  Animal.cpp \
+				  Dog.cpp \
 				  main.cpp \
 				  )
 

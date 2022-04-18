@@ -12,6 +12,7 @@ ScavTrap::ScavTrap()
 }
 
 ScavTrap::ScavTrap(const std::string name): ClapTrap(name)
+
 {
 	setHP(100);
 	setEnergy(50);
