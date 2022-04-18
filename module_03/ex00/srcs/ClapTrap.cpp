@@ -5,37 +5,37 @@
 ClapTrap::ClapTrap(): _HP(10), _energy(10), _attack(0)
 {
 	_name = "ClapTrap";
-	std::cerr << "Claptrap: " << _name << "constructed !" << std::endl;
+	std::cerr << "Claptrap: " << _name << " constructed !" << std::endl;
 }
 
 ClapTrap::ClapTrap(const std::string name): _HP(10), _energy(10), _attack(0)
 {
 	_name = name;
-	std::cerr << "Claptrap: " << _name << "name constructed !" << std::endl;
+	std::cerr << "Claptrap: " << _name << " name constructed !" << std::endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap& claptrap): _HP(10), _energy(10), _attack(0)
+ClapTrap::ClapTrap(const ClapTrap& claptrap)
 {
-	_name = claptrap.getName();
-	_HP = claptrap.getHP();
-	_energy = claptrap.getEnergy();
-	_attack = claptrap.getAttack();
+	*this = claptrap;
 	std::cerr << "Claptrap: " << _name << "copy constructed !" << std::endl;
 }
 
 ClapTrap& ClapTrap::operator = (const ClapTrap& claptrap)
 {
-	_name = claptrap.getName();
-	_HP = claptrap.getHP();
-	_energy = claptrap.getEnergy();
-	_attack = claptrap.getAttack();
-	std::cerr << "Claptrap: " << _name << "equal constructed !" << std::endl;
+	if (this == &claptrap)
+	{
+		_name = claptrap.getName();
+		_HP = claptrap.getHP();
+		_energy = claptrap.getEnergy();
+		_attack = claptrap.getAttack();
+	}
+	std::cerr << "Claptrap: " << _name << " equal constructed !" << std::endl;
 	return (*this);
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cerr << "Claptrap: " << _name << "destroyed !" << std::endl;
+	std::cerr << "Claptrap: " << _name << " destroyed !" << std::endl;
 }
 
 // SETTER-GETTER

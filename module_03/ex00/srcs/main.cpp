@@ -1,7 +1,7 @@
 #include "ClapTrap.hpp"
 #include <iostream>
 
-static void	status(ClapTrap C)
+static void	status(ClapTrap& C)
 {
 	std::cout << "name: " << C.getName() << "||";
 	std::cout << "HP: " << C.getHP() << "||";
