@@ -17,7 +17,6 @@ void Harl::complain( std::string level )
 		"WARNING",
 		"ERROR"
 	};
-
 	for (int i = 0; i < 4; i++)
 		if (!level.compare(inputs[i]))
 		{
