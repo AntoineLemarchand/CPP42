@@ -24,6 +24,8 @@ SRCS			= $(addprefix srcs/, \
 				  Animal.cpp \
 				  Dog.cpp \
 				  Cat.cpp \
+				  WrongAnimal.cpp \
+				  WrongCat.cpp \
 				  main.cpp \
 				  )
 
@@ -35,7 +37,7 @@ RM				= rm -f
 
 CC				= g++
 
-CFLAGS			= -Wall -Wextra -Werror -g -fsanitize=address -std=c++98
+CFLAGS			= -Wall -Wextra -Werror -g -std=c++98
 
 CPPFLAGS		= -I includes
 

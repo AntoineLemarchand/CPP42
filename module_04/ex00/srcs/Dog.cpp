@@ -26,3 +26,8 @@ Dog::~Dog()
 {
 	std::cerr << "Dog destroyed" << std::endl;
 }
+
+void		Dog::makeSound() const
+{
+	std::cout << "wouf" << std::endl;
+}
