@@ -3,7 +3,7 @@
 
 Animal::Animal()
 {
-	type = "truc";
+	type = "";
 	std::cerr << "Animal constructed" << std::endl;
 };
 
@@ -41,6 +41,4 @@ void	Animal::makeSound() const
 		std::cout << "ouaf" << std::endl;
 	else if (!type.compare("Cat"))
 		std::cout << "miaou" << std::endl;
-	else
-		std::cout << "ARGLEUGHAGNALHG" << std::endl;
 };
