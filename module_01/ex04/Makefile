@@ -28,9 +28,9 @@ NAME			= sedlike
 
 RM				= rm -f
 
-CC				= g++
+CC				= c++
 
-CFLAGS			= -Wall -Wextra -Werror -g -fsanitize=address -std=c++98
+CFLAGS			= -Wall -Wextra -Werror -g -std=c++98
 
 CPPFLAGS		=
 

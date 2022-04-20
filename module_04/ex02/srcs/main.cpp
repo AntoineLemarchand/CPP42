@@ -4,6 +4,7 @@
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
+/*
 void	basics( void )
 {
 	std::cout << "┏━━━━━━━━━━━━━━━━━━━━━━━━┓" << std::endl;
@@ -26,7 +27,9 @@ void	basics( void )
 	delete j;
 	delete i;
 }
+*/
 
+/*
 void	wrongs( void )
 {
 	std::cout << "┏━━━━━━━━━━━━━━━━━━━━━━━━┓" << std::endl;
@@ -47,6 +50,7 @@ void	wrongs( void )
 	delete meta2;
 	delete badCat;
 }
+*/
 
 void	brains( void )
 {
@@ -82,8 +86,8 @@ void	brains( void )
 
 int main( void )
 {
-	basics();
-	wrongs();
+//	basics();
+//	wrongs();
 	brains();
 	return 0;
 }

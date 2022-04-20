@@ -6,8 +6,11 @@ std::string	sedLine(const char* str, char* s1, char* s2)
 {
 	int	i = 0;
 	std::string	ret;
+	std::string tofind =  std::string(s1);
 	std::string repl = std::string(s2);
 
+	if (tofind.size() == 0)
+		return (str);
 	while (str[i])
 	{
 		if (!strncmp(str + i, s1, strlen(s1)))
@@ -54,7 +57,7 @@ int main(int ac, char **av)
 	}
 	std::string	line;
 	while (getline(input, line))
-		output << sedLine(line.c_str(), av[2], av[3]) << std::endl;
+		output << sedLine(line.c_str(), av[2], av[3]);
 	input.close();
 	output.close();
 }

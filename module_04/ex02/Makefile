@@ -21,23 +21,26 @@ define removing
 endef
 
 SRCS			= $(addprefix srcs/, \
-				  	HumanA.cpp \
-				  	HumanB.cpp \
-				  	Weapon.cpp \
-				  	main.cpp \
-					)
+				  Animal.cpp \
+				  Dog.cpp \
+				  Cat.cpp \
+				  WrongAnimal.cpp \
+				  WrongCat.cpp \
+				  Brain.cpp \
+				  main.cpp \
+				  )
 
 OBJS			= $(SRCS:.cpp=.o)
 
-NAME			= getViolent
+NAME			= a.out
 
 RM				= rm -f
 
-CC				= c++
+CC				= g++
 
 CFLAGS			= -Wall -Wextra -Werror -g -std=c++98
 
-CPPFLAGS		= -Iincludes
+CPPFLAGS		= -I includes
 
 LIBS			= 
 

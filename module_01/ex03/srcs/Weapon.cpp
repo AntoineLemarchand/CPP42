@@ -2,7 +2,10 @@
 
 Weapon::Weapon(std::string type)
 {
-	this->type = type;
+	if (type.compare(""))
+		this->type = type;
+	else
+		this->type = "The weapon no one speak about";
 }
 
 Weapon::~Weapon()
@@ -26,5 +29,8 @@ std::string	Weapon::getType( void ) const
 
 void	Weapon::setType( std::string type )
 {
-	this->type = type;
+	if (type.compare(""))
+		this->type = type;
+	else
+		this->type = "The weapon no one speak about";
 }
