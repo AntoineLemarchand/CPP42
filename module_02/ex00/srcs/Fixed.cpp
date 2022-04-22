@@ -23,7 +23,7 @@ Fixed& Fixed::operator = (const Fixed& src)
 
 Fixed::~Fixed()
 {
-	std::cerr << this->_value << " Destructor called" << std::endl;
+	std::cerr << "Destructor called" << std::endl;
 }
 
 int	Fixed::getRawBits( void ) const

@@ -42,39 +42,39 @@ Fixed&	Fixed::operator = (const Fixed& src)
 
 bool	Fixed::operator > ( const Fixed& fixed ) const
 {
-	return (this->_value > fixed._value);
+	return (_value > fixed._value);
 }
 
 bool	Fixed::operator < ( const Fixed& fixed ) const
 {
-	return (this->_value < fixed._value);
+	return (_value < fixed._value);
 }
 
 bool	Fixed::operator >= ( const Fixed& fixed ) const
 {
-	return (this->_value >= fixed._value);
+	return (_value >= fixed._value);
 }
 
 bool	Fixed::operator <= ( const Fixed& fixed ) const
 {
-	return (this->_value <= fixed._value);
+	return (_value <= fixed._value);
 }
 
 bool	Fixed::operator == ( const Fixed& fixed ) const
 {
-	return (this->_value == fixed._value);
+	return (_value == fixed._value);
 }
 
 bool	Fixed::operator != ( const Fixed& fixed ) const
 {
-	return (this->_value != fixed._value);
+	return (_value != fixed._value);
 }
 
 Fixed	Fixed::operator + ( const Fixed& fixed ) const
 {
 	Fixed	res;
 
-	res._value = this->_value + fixed._value;
+	res._value = _value + fixed._value;
 	return (res);
 }
 
@@ -82,7 +82,7 @@ Fixed	Fixed::operator - ( const Fixed& fixed ) const
 {
 	Fixed	res;
 
-	res._value = this->_value - fixed._value;
+	res._value = _value - fixed._value;
 	return (res);
 }
 
@@ -90,7 +90,7 @@ Fixed	Fixed::operator * ( const Fixed& fixed ) const
 {
 	Fixed	res;
 
-	res._value = this->_value * fixed._value;
+	res._value = (toFloat() * fixed.toFloat()) * (1 << _scaling_factor);
 	return (res);
 }
 
@@ -98,7 +98,7 @@ Fixed	Fixed::operator / ( const Fixed& fixed ) const
 {
 	Fixed	res;
 
-	res._value = this->_value / fixed._value;
+	res._value = _value / fixed._value;
 	return (res);
 }
 
@@ -154,12 +154,12 @@ void Fixed::setRawBits( int const raw )
 //OTHER
 float	Fixed::toFloat( void ) const
 {
-	return ((float)this->_value / (float)(1 << this->_scaling_factor));
+	return ((float)_value / (float)(1 << _scaling_factor));
 }
 
 int		Fixed::toInt( void ) const
 {
-	return (this->_value / (1 << this->_scaling_factor));
+	return (_value / (1 << _scaling_factor));
 }
 
 Fixed&	Fixed::min(Fixed& a, Fixed& b)

@@ -16,11 +16,13 @@ Fixed::Fixed(const Fixed& src)
 
 Fixed::Fixed( const int val )
 {
+	std::cerr << "Int constructor called" << std::endl;
 	setRawBits(val * (1 << _scaling_factor));
 }
 
 Fixed::Fixed( const float val )
 {
+	std::cerr << "Float constructor called" << std::endl;
 	setRawBits(roundf(val * (1 << _scaling_factor)));
 }
 
@@ -45,13 +47,11 @@ Fixed::~Fixed()
 
 int	Fixed::getRawBits( void ) const
 {
-	std::cerr << "getRawBits member function called" << std::endl;
 	return (_value);
 }
 
 void Fixed::setRawBits( int const raw )
 {
-	std::cerr << "setRawBits member function called" << std::endl;
 	_value = raw;
 }
 

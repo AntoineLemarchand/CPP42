@@ -30,7 +30,7 @@ RM				= rm -f
 
 CC				= c++
 
-CFLAGS			= -Wall -Wextra -Werror -g -fsanitize=address -std=c++98
+CFLAGS			= -Wall -Wextra -Werror -g -std=c++98
 
 CPPFLAGS		= -I includes
 
