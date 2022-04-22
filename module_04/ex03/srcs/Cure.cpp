@@ -1,19 +1,28 @@
 #include "Cure.hpp"
 
-Cure()
+Cure::Cure()
 {}
 
-Cure(const Ice& cure)
+Cure::Cure(const Cure& cure)
+{
+	(void)cure;
+}
+
+Cure& Cure::operator = (const Cure& cure)
+{
+	(void)cure;
+	return (*this);
+}
+
+Cure::~Cure()
 {}
 
-Cure operator = (const Ice& cure)
-{}
+AMateria*	Cure::clone() const
+{
+	return (NULL);
+}
 
-~Cure()
-{}
-
-Cure&	clone() const
-{}
-
-void	use(ICharacter& character) const
-{}
+void	Cure::use(ICharacter& character)
+{
+	(void)character;
+}

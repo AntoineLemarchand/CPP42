@@ -1,19 +1,30 @@
+#include "AMateria.hpp"
 #include "Ice.hpp"
 
 Ice::Ice()
 {}
 
-Ice(const Ice& ice)
-{}
+Ice::Ice(const Ice& ice)
+{
+	(void)ice;
+}
 
-Ice operator = (const Ice& ice)
-{}
+Ice& Ice::operator = (const Ice& ice)
+{
+	(void)ice;
+	return (*this);
+}
 
-~Ice()
-{}
+Ice::~Ice()
+{
+}
 
-Ice&	clone() const
-{}
+AMateria*	Ice::clone() const
+{
+	return (NULL);
+}
 
-void	use(ICharacter& character) const
-{}
+void	Ice::use(ICharacter& character)
+{
+	(void)character;
+}

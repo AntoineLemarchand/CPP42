@@ -21,17 +21,13 @@ define removing
 endef
 
 SRCS			= $(addprefix srcs/, \
-				  AMateria.cpp \
-				  IMateriaSource.cpp \
-				  ICharacter.cpp \
-				  Ice.cpp \
-				  Cure.cpp \
+				  Bureaucrat.cpp \
 				  main.cpp \
 				  )
 
 OBJS			= $(SRCS:.cpp=.o)
 
-NAME			= a.out
+NAME			= Bureaucrat
 
 RM				= rm -f
 
