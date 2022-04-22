@@ -38,7 +38,7 @@ CFLAGS			= -Wall -Wextra -Werror -g -fsanitize=address -std=c++98
 
 CPPFLAGS		= -Iincludes
 
-LIBS			= -lpthread
+LIBS			=
 
 %.o : %.cpp
 				$(call compiling,$<,$(<:.cpp=.o),0)

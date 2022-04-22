@@ -34,9 +34,9 @@ CC				= c++
 
 CFLAGS			= -Wall -Wextra -Werror -std=c++98
 
-CPPFLAGS		= -Iincludes
+CPPFLAGS		=
 
-LIBS			= -lpthread
+LIBS			=
 
 %.o : %.cpp
 				$(call compiling,$<,$(<:.cpp=.o),0)
