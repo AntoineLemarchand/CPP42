@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+
 
 class Bureaucrat
 {
@@ -18,9 +20,11 @@ class Bureaucrat
 		std::string	getName( void ) const;
 		int			getGrade( void ) const;
 
-		void	setName( const std:string name );
+		void	setName( const std::string name );
 		void	setGrade( int grade );
 
 		void	upGrade( void );
-		void	downGrad( void );
+		void	downGrade( void );
 };
+
+std::ostream&	operator << ( std::ostream& out, const Bureaucrat& b );

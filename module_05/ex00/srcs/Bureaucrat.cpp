@@ -1,18 +1,21 @@
+#include <iostream>
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat()
+Bureaucrat::Bureaucrat(): _name(std::string("Bureaucrat"))
 {
-	_name = "bureaucrat";
+	std::cerr << "Bureaucrat constructor called" << std::endl;
 	_grade = 75;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& b)
 {
+	std::cerr << "Bureaucrat copy constructor called" << std::endl;
 	*this = b;
 }
 
 Bureaucrat& Bureaucrat::operator = (const Bureaucrat& b)
 {
+	std::cerr << "Bureaucrat equal constructor called" << std::endl;
 	if (this != &b)
 	{
 		_grade = b.getGrade();
@@ -21,24 +24,32 @@ Bureaucrat& Bureaucrat::operator = (const Bureaucrat& b)
 }
 
 Bureaucrat::~Bureaucrat()
-{}
-
-Bureaucrat::Bureaucrat(std::string name)
 {
-	_name = name;
+	std::cerr << "Bureaucrat destructor called" << std::endl;
+}
+
+Bureaucrat::Bureaucrat(std::string name): _name(name)
+{
+	std::cerr << "Bureaucrat name constructor called" << std::endl;
+	_grade = 75;
 }
 
 Bureaucrat::Bureaucrat(int grade)
 {
+	std::cerr << "Bureaucrat grade constructor called" << std::endl;
 	if (grade <= 150 && grade >= 1)
 		_grade = grade;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade)
+Bureaucrat::Bureaucrat(std::string name, int grade): _name(name)
 {
-	_name = name;
+	std::cerr << "Bureaucrat name/grade constructor called" << std::endl;
 	if (grade <= 150 && grade >= 1)
 		_grade = grade;
+	else if (grade > 150)
+		throw std::invalid_argument("GradeTooHighException");
+	else
+		throw std::invalid_argument("GradeTooLowException");
 }
 
 std::string	Bureaucrat::getName( void ) const
@@ -55,22 +66,30 @@ void	Bureaucrat::setGrade( int grade )
 {
 	if (grade <= 150 && grade >= 1)
 		_grade = grade;
+	else if (grade > 150)
+		throw std::invalid_argument("GradeTooHighException");
+	else
+		throw std::invalid_argument("GradeTooLowException");
 }
 
 void	Bureaucrat::upGrade( void )
 {
-	if (grade > 1)
+	if (_grade > 1)
 		_grade--;
+	else
+		throw std::invalid_argument("GradeTooLowException");
 }
 
-void	Bureaucrat::downGrad( void )
+void	Bureaucrat::downGrade( void )
 {
-	if (grade < 150)
+	if (_grade < 150)
 		_grade++;
+	else
+		throw std::invalid_argument("GradeTooHighException");
 }
 
 std::ostream&	operator << ( std::ostream& out, const Bureaucrat& b )
 {
-	out << b.getName() << ", bureaucrat grade " << b.getGrade();
+	out << b.getName() << std::string(", bureaucrat grade ") << b.getGrade();
 	return (out);
 }
