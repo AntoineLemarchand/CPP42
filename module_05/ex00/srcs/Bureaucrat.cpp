@@ -74,7 +74,7 @@ void	Bureaucrat::setGrade( int grade )
 
 void	Bureaucrat::upGrade( void )
 {
-	if (_grade < 1)
+	if (_grade <= 1)
 		throw Bureaucrat::GradeTooHighException();
 	else
 		_grade--;
@@ -82,7 +82,7 @@ void	Bureaucrat::upGrade( void )
 
 void	Bureaucrat::downGrade( void )
 {
-	if (_grade > 150)
+	if (_grade >= 150)
 		throw Bureaucrat::GradeTooLowException();
 	else
 		_grade++;
@@ -92,4 +92,14 @@ std::ostream&	operator << ( std::ostream& out, const Bureaucrat& b )
 {
 	out << b.getName() << std::string(", bureaucrat grade ") << b.getGrade();
 	return (out);
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return ("Grade should be more than 0");
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return ("Grade should be lower than 151");
 }
