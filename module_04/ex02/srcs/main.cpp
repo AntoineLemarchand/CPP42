@@ -82,6 +82,11 @@ void	brains( void )
 		std::cerr << "━━━━━━━━━ Destroying " << farm[i]->getType() << " ━━━━━━━━━" << std::endl;
 		delete farm[i];
 	}
+		std::cerr << "━━━━━━━━━━━━━━━━━━" << std::endl;
+	Dog	basic;
+	{
+		Dog	tmp = basic;
+	}
 }
 
 int main( void )

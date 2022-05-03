@@ -9,20 +9,20 @@ Dog::Dog()
 	std::cerr << "Dog constructed" << std::endl;
 }
 
-Dog::Dog(const Dog* dog): Animal()
+Dog::Dog(const Dog& dog): Animal()
 {
 	*this = dog;
 	std::cerr << "Dog copy constructed" << std::endl;
 }
 
-Dog Dog::operator = (const Dog* dog)
+Dog&	Dog::operator = (const Dog& dog)
 {
 	std::cerr << "Dog equal constructed" << std::endl;
-	if (this != dog)
+	if (this != &dog)
 	{
-		type = dog->getType();
-		for (int i = 0; i < 100; i++)
-			_brain->ideas[i] = dog->getBrain()->ideas[i];
+		_brain = new Brain();
+		type = dog.getType();
+		*_brain = dog.getBrain();
 	}
 	return (*this);
 }
@@ -33,9 +33,9 @@ Dog::~Dog()
 	std::cerr << "Dog destroyed" << std::endl;
 }
 
-Brain*	Dog::getBrain( void ) const
+Brain&	Dog::getBrain( void ) const
 {
-	return (_brain);
+	return (*_brain);
 }
 
 void	Dog::setBrain( const Brain* brain )
