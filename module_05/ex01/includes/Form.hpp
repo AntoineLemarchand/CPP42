@@ -1,27 +1,38 @@
 #pragma once
+#include <string>
+#include "Bureaucrat.hpp"
 
 class Form
 {
 	private:
 		const std::string	_name;
 		bool				_signed;
-		const int			_signGrade;
-		const int			_execGrade;
+		const int	_sign;
+		const int	_exec;
 	public:
 		Form();
-		Form(std::string name, int sign, int exec);
-
 		Form(const Form& form);
 		Form& operator = (const Form& form);
 		~Form();
 
-		std::string	getName( void ) const;
-		bool		getSigned( void ) const;
-		int			getSignGrade( void ) const;
-		int			getExecGrade( void ) const;
+		void	beSigned(Bureaucrat& bureaucrat);
 
-		void		signForm( void );
+		std::string		getName() const;
+		bool			getSigned() const;
+		unsigned int	getSign() const;
+		unsigned int	getExec() const;
 
+		class GradeTooHighException: public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
+
+		class GradeTooLowException: public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
 };
 
-std::ostream& operator << (std::ostream& out, const Form& form);
+std::ostream&	operator << ( std::ostream& out, const Form& b );

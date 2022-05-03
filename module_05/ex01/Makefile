@@ -22,12 +22,13 @@ endef
 
 SRCS			= $(addprefix srcs/, \
 				  Bureaucrat.cpp \
+				  Form.cpp \
 				  main.cpp \
 				  )
 
 OBJS			= $(SRCS:.cpp=.o)
 
-NAME			= Bureaucrat
+NAME			= Form
 
 RM				= rm -f
 

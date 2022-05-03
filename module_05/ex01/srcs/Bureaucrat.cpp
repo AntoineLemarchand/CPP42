@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat(): _name(std::string("Bureaucrat"))
 {
@@ -44,12 +45,12 @@ Bureaucrat::Bureaucrat(int grade)
 Bureaucrat::Bureaucrat(std::string name, int grade): _name(name)
 {
 	std::cerr << "Bureaucrat name/grade constructor called" << std::endl;
-	if (grade <= 150 && grade >= 1)
-		_grade = grade;
-	else if (grade > 150)
-		throw std::invalid_argument("GradeTooHighException");
+	if (grade > 150)
+		throw Bureaucrat::GradeTooLowException();
+	else if (grade < 1)
+		throw Bureaucrat::GradeTooHighException();
 	else
-		throw std::invalid_argument("GradeTooLowException");
+		_grade = grade;
 }
 
 std::string	Bureaucrat::getName( void ) const
@@ -64,32 +65,58 @@ int			Bureaucrat::getGrade( void ) const
 
 void	Bureaucrat::setGrade( int grade )
 {
-	if (grade <= 150 && grade >= 1)
-		_grade = grade;
-	else if (grade > 150)
-		throw std::invalid_argument("GradeTooHighException");
+	if (grade > 150)
+		throw Bureaucrat::GradeTooLowException();
+	else if (grade < 1)
+		throw Bureaucrat::GradeTooHighException();
 	else
-		throw std::invalid_argument("GradeTooLowException");
+		_grade = grade;
 }
 
 void	Bureaucrat::upGrade( void )
 {
-	if (_grade > 1)
-		_grade--;
+	if (_grade <= 1)
+		throw Bureaucrat::GradeTooHighException();
 	else
-		throw std::invalid_argument("GradeTooLowException");
+		_grade--;
 }
 
 void	Bureaucrat::downGrade( void )
 {
-	if (_grade < 150)
-		_grade++;
+	if (_grade >= 150)
+		throw Bureaucrat::GradeTooLowException();
 	else
-		throw std::invalid_argument("GradeTooHighException");
+		_grade++;
+}
+
+void	Bureaucrat::signForm(Form& form)
+{
+	bool err = false;
+	try
+	{
+		form.beSigned(*this);
+	}
+	catch (const Form::GradeTooLowException& e)
+	{
+		std::cout << _name << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+		err = true;
+	}
+	if (!err)
+		std::cout << _name << " signed " << form.getName() << std::endl;
 }
 
 std::ostream&	operator << ( std::ostream& out, const Bureaucrat& b )
 {
 	out << b.getName() << std::string(", bureaucrat grade ") << b.getGrade();
 	return (out);
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return ("Grade should be above 0");
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return ("Grade should be below 151");
 }
