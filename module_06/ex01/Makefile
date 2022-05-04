@@ -24,7 +24,7 @@ SRCS			= main.cpp
 
 OBJS			= $(SRCS:.cpp=.o)
 
-NAME			= convert
+NAME			= cast
 
 RM				= rm -f
 
@@ -32,7 +32,7 @@ CC				= c++
 
 CFLAGS			= -Wall -Wextra -Werror -g -std=c++98
 
-CPPFLAGS		= -I includes
+CPPFLAGS		=
 
 LIBS			= 
 
