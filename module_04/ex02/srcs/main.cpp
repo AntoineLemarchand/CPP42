@@ -70,12 +70,12 @@ void	brains( void )
 	Animal *farm[4] = {new Dog(), new Dog(), cat, cat2};
 
 	std::cout << "original cat first idea " << std::endl;
-	std::cout << "\taddress → " << &((Cat*)farm[2])->getBrain()->ideas[0] << std::endl;
-	std::cout << "\tthought → " << ((Cat*)farm[2])->getBrain()->ideas[0] << std::endl;
+	std::cout << "\taddress → " << &((Cat*)farm[2])->getBrain().ideas[0] << std::endl;
+	std::cout << "\tthought → " << ((Cat*)farm[2])->getBrain().ideas[0] << std::endl;
 
 	std::cout << "copied cat first idea   " << std::endl;
-	std::cout << "\taddress → " << &((Cat*)farm[3])->getBrain()->ideas[0] << std::endl;
-	std::cout << "\tthought → " << ((Cat*)farm[3])->getBrain()->ideas[0] << std::endl;
+	std::cout << "\taddress → " << &((Cat*)farm[3])->getBrain().ideas[0] << std::endl;
+	std::cout << "\tthought → " << ((Cat*)farm[3])->getBrain().ideas[0] << std::endl;
 
 	for (int i = 0; i < 4; i++)
 	{
@@ -85,7 +85,7 @@ void	brains( void )
 		std::cerr << "━━━━━━━━━━━━━━━━━━" << std::endl;
 	Dog	basic;
 	{
-		Dog	tmp = basic;
+		Dog tmp = basic;
 	}
 }
 

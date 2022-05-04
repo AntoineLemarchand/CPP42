@@ -12,7 +12,7 @@ class Cat: public Animal
 		Cat& operator = (const Cat& cat);
 		~Cat();
 
-		Brain*	getBrain( void ) const;
+		Brain&	getBrain( void ) const;
 		void	setBrain( Brain& brain );
 
 		void	makeSound() const;
