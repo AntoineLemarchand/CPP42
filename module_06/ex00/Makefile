@@ -30,11 +30,11 @@ RM				= rm -f
 
 CC				= c++
 
-CFLAGS			= -Wall -Wextra -Werror -g -std=c++98
+CFLAGS			= -Wall -Wextra -Werror -std=c++98
 
-CPPFLAGS		= -I includes
+CPPFLAGS		=
 
-LIBS			= 
+LIBS			=
 
 %.o : %.cpp
 				$(call compiling,$<,$(<:.cpp=.o),0)
@@ -44,7 +44,7 @@ ${NAME}:		$(OBJS)
 
 all:			$(NAME)
 
-clean:	
+clean:
 				@echo -n Removing
 				$(call removing,$(OBJS))
 
@@ -52,4 +52,4 @@ fclean:			clean
 				@echo -n Removing
 				$(call removing,$(NAME))
 
-re:				fclean all
+re:				fclean ${NAME}

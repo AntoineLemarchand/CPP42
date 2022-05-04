@@ -20,8 +20,9 @@ Cat& Cat::operator = (const Cat& cat)
 	std::cerr << "Cat equal constructed" << std::endl;
 	if (this != &cat)
 	{
+		*_brain = cat.getBrain();
 		type = cat.getType();
-		setBrain(*cat.getBrain());
+		*_brain = cat.getBrain();
 	}
 	return (*this);
 }
@@ -32,9 +33,9 @@ Cat::~Cat()
 	std::cerr << "Cat destroyed" << std::endl;
 }
 
-Brain*	Cat::getBrain( void ) const
+Brain&	Cat::getBrain( void ) const
 {
-	return (_brain);
+	return (*_brain);
 }
 
 void	Cat::setBrain( Brain& brain )

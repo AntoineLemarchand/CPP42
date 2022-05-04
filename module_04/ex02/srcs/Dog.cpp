@@ -20,7 +20,8 @@ Dog&	Dog::operator = (const Dog& dog)
 	std::cerr << "Dog equal constructed" << std::endl;
 	if (this != &dog)
 	{
-		_brain = new Brain();
+		
+		_brain = new Brain(dog.getBrain());
 		type = dog.getType();
 		*_brain = dog.getBrain();
 	}
