@@ -1,0 +1,118 @@
+#include <iostream>
+#include <cstdlib>
+#include <cstring>
+#include <iomanip>
+
+enum types { typeChar, typeInt, typeFloat, typeDouble, typeOther };
+
+static void	putstatus(std::string charType, std::string intType, std::string floatType, std::string doubleType)
+{
+	std::cout << "char: " << charType << std::endl;
+	std::cout << "int: " << intType << std::endl;
+	std::cout << "float: " << floatType << std::endl;
+	std::cout << "double: " << doubleType << std::endl;
+}
+
+void	putFromChar( std::string toPrint )
+{
+	std::cout << "char: " << toPrint << std::endl;
+	std::cout << "int: " << static_cast<int>(toPrint[0]) << std::endl;
+	std::cout << std::fixed << std::setprecision(1);
+	std::cout << "float: " << static_cast<float>(toPrint[0]) << 'f' << std::endl;
+	std::cout << "double: " << static_cast<double>(toPrint[0]) << std::endl;
+}
+
+void	putFromInt( std::string toPrint )
+{
+	double val = strtod(toPrint.c_str(), NULL);
+	if (isprint(val))
+		std::cout << "char: " << static_cast<char>(val) << std::endl;
+	else
+		std::cout << "char:  Non displayable" << std::endl;
+	std::cout << "int: " << static_cast<int>(val) << std::endl;
+	std::cout << std::fixed << std::setprecision(1);
+	std::cout << "float: " << static_cast<float>(val) << 'f' << std::endl;
+	std::cout << "double: " << static_cast<double>(val) << std::endl;
+}
+
+void	putFromFloat( std::string toPrint )
+{
+	double val = strtod(toPrint.c_str(), NULL);
+	if (isprint(val))
+		std::cout << "char: " << static_cast<char>(val) << std::endl;
+	else
+		std::cout << "char:  Non displayable" << std::endl;
+	std::cout << "int: " << static_cast<int>(val) << std::endl;
+	std::cout << std::fixed << std::setprecision(1);
+	std::cout << "float: " << static_cast<float>(val) << 'f' << std::endl;
+	std::cout << "double: " << val << std::endl;
+}
+
+void	putFromDouble( std::string toPrint )
+{
+	double val = strtod(toPrint.c_str(), NULL);
+	if (isprint(val))
+		std::cout << "char: " << static_cast<char>(val) << std::endl;
+	else
+		std::cout << "char:  Non displayable" << std::endl;
+	std::cout << "int: " << static_cast<int>(val) << std::endl;
+	std::cout << std::fixed << std::setprecision(1);
+	std::cout << "float: " << static_cast<float>(val) << 'f' << std::endl;
+	std::cout << "double: " << val << std::endl;
+}
+
+void	putFromOther( std::string toPrint )
+{
+	if (!toPrint.compare("+inf") || !toPrint.compare("+inff"))
+		putstatus("impossible", "impossible", "+inff", "+inf");
+	else if (!toPrint.compare("-inf") || !toPrint.compare("-inff"))
+		putstatus("impossible", "impossible", "-inff", "-inf");
+	else
+		putstatus("impossible", "impossible", "nanf", "nan");
+}
+
+int	detect( char *s )
+{
+	double	value;
+	char	*pend;
+
+	value = strtod(s, &pend);
+	if (strlen(s) == 1 && !isdigit(*s))
+		return (typeChar);
+	else if (!*pend && !(static_cast<int>(value) - value))
+		return (typeInt);
+	else if (strlen(pend) == 1 && *pend == 'f')
+		return (typeFloat);
+	else if (!*pend)
+		return (typeDouble);
+	else
+		return (typeOther);
+}
+
+int main( int ac, char **av )
+{
+	if (ac != 2)
+		std::cout << "Usage: ./cast <arg>" << std::endl;
+	else
+	{
+		std::string toPrint = av[1];
+		switch (detect(av[1]))
+		{
+			case (typeChar):
+				putFromChar(toPrint);
+				break;
+			case (typeInt):
+				putFromInt(toPrint);
+				break;
+			case (typeFloat):
+				putFromFloat(toPrint);
+				break;
+			case (typeDouble):
+				putFromDouble(toPrint);
+				break;
+			case (typeOther):
+				putFromOther(toPrint);
+				break;
+		}
+	}
+}
