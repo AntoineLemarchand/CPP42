@@ -6,6 +6,8 @@ template<typename T>
 class MutantStack: public std::stack<T>
 {
 	public:
+		typedef typename std::stack<T>::container_type::iterator iterator;
+
 		MutantStack( void ): std::stack<T>()
 		{};
 
@@ -23,8 +25,14 @@ class MutantStack: public std::stack<T>
 
 		~MutantStack( void ) {};
 
-		typedef typename std::stack<T>::container_type::iterator iterator;
 
-		iterator begin( void ) { return this->c.begin(); };
-		iterator end( void ) {return this->c.end(); };
+		iterator begin( void )
+		{
+			return (this->c.begin());
+		};
+
+		iterator end( void )
+		{
+			return (this->c.end());
+		};
 };
