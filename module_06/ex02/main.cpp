@@ -39,22 +39,35 @@ void	identify( Base* p )
 
 void identify( Base& p )
 {
-	if (dynamic_cast<A*>(&p))
-		std::cout << 'A';
-	else if (dynamic_cast<B*>(&p))
+	try 
+	{
+		(void)dynamic_cast<A&>(p);
+	}
+	catch (...)
+	{
+		try
+		{
+			(void)dynamic_cast<B&>(p);
+		}
+		catch (...)
+		{
+			std::cout << 'C';
+			return ;
+		}
 		std::cout << 'B';
-	else
-		std::cout << 'C';
+		return ;
+	}
+	std::cout << 'A';
+	return ;
 }
 
 int main( void )
 {
-		Base* base = generate();
-		std::cout << " | idendification by pointer: ";
-		identify(base);
-		std::cout << " | idendification by reference: ";
-		identify(*base);
-		std::cout << std::endl;
-		delete base;
-		return (0);
+	Base* base = generate();
+	std::cout << " | idendification by pointer: ";
+	identify(base);
+	std::cout << " | idendification by reference: ";
+	identify(*base);
+	std::cout << std::endl;
+	return (0);
 }

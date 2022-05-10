@@ -20,7 +20,6 @@ void	putFromChar( std::string toPrint )
 {
 	std::cout << "char: " << toPrint << std::endl;
 	std::cout << "int: " << static_cast<int>(toPrint[0]) << std::endl;
-	std::cout << std::fixed << std::setprecision(1);
 	std::cout << "float: " << static_cast<float>(toPrint[0]) << 'f' << std::endl;
 	std::cout << "double: " << static_cast<double>(toPrint[0]) << std::endl;
 }
@@ -33,7 +32,6 @@ void	putFromInt( std::string toPrint )
 	else
 		std::cout << "char:  Non displayable" << std::endl;
 	std::cout << "int: " << static_cast<int>(val) << std::endl;
-	std::cout << std::fixed << std::setprecision(1);
 	std::cout << "float: " << static_cast<float>(val) << 'f' << std::endl;
 	std::cout << "double: " << static_cast<double>(val) << std::endl;
 }
@@ -50,7 +48,6 @@ void	putFromFloat( std::string toPrint )
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << static_cast<int>(val) << std::endl;
-	std::cout << std::fixed << std::setprecision(1);
 	std::cout << "float: " << static_cast<float>(val) << 'f' << std::endl;
 	std::cout << "double: " << val << std::endl;
 }
@@ -67,7 +64,6 @@ void	putFromDouble( std::string toPrint )
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << static_cast<int>(val) << std::endl;
-	std::cout << std::fixed << std::setprecision(1);
 	std::cout << "float: " << static_cast<float>(val) << 'f' << std::endl;
 	std::cout << "double: " << val << std::endl;
 }
@@ -98,7 +94,7 @@ int	detect( char *s )
 			&& static_cast<int>(value) <= std::numeric_limits<int>::max())
 		return (typeInt);
 	else if (strlen(pend) == 1 && *pend == 'f'
-			&& static_cast<float>(value) >= std::numeric_limits<float>::min()
+			&& static_cast<float>(value) >= -std::numeric_limits<float>::max()
 			&& static_cast<float>(value) <= std::numeric_limits<float>::max())
 		return (typeFloat);
 	else if (!*pend && value == atof(s))

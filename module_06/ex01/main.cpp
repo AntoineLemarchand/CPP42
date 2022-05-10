@@ -21,13 +21,18 @@ Data* deserialize(uintptr_t raw)
 int main( void )
 {
 	Data test;
+	uintptr_t	raw;
 	test.name = "hello";
 	test.val = 42;
 
-	std::cout << test.name << " " << test.val << std::endl;
+	std::cout << "init: " << test.name << ' ' << test.val << std::endl;
 
-	test = *deserialize(serialize(&test));
+	raw = serialize(&test);
 
-	std::cout << test.name << " " << test.val << std::endl;
+	std::cout << "serialized: " << raw << std::endl;
+
+	test = *deserialize(raw);
+
+	std::cout << "deserialized: " << test.name << ' ' << test.val << std::endl;
 	return (0);
 }

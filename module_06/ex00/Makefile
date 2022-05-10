@@ -1,11 +1,11 @@
 define compiling
 	@printf 'Compiling %s\n' $1
-	@$(CC) $(CFLAGS) $(CPPFLAGS) -c $1 -o $2
+	@$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c $1 -o $2
 endef
 
 define finishing
 	@printf 'Finishing %s\n' $1
-	@$(CC) $(CFLAGS) $(CPPFLAGS) $2 -o $1 $(LIBS)
+	@$(CXX) $(CXXFLAGS) $(CPPFLAGS) $2 -o $1 $(LIBS)
 endef
 
 define cleaning
@@ -28,9 +28,9 @@ NAME			= convert
 
 RM				= rm -f
 
-CC				= c++
+CXX				= c++
 
-CFLAGS			= -Wall -Wextra -Werror -std=c++98
+CXXFLAGS		= -Wall -Wextra -Werror -std=c++98
 
 CPPFLAGS		=
 
