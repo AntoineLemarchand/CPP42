@@ -34,7 +34,7 @@ int main()
 
 	std::cout << std::endl;
 
-	std::cout << "Generating 50000 numbers..." << std::endl;
+	std::cout << "Generating 40000 numbers..." << std::endl;
 	Span sp3 = Span(40000);
 	std::vector<int> randNum2(40000, 0);
 	std::generate(randNum2.begin(), randNum2.end(), randInt);

@@ -54,10 +54,10 @@ unsigned int	Span::shortestSpan( void ) const
 {
 	if (_size <= 1)
 		throw std::exception();
-	long ret = abs(static_cast<long>(_nums[0]) - static_cast<long>(_nums[1]));
+	long ret = std::abs(static_cast<long>(_nums[0]) - static_cast<long>(_nums[1]));
 	for (unsigned int i = 0; i < _nums.size() - 1; i++)
 	{
-		long eval = abs(static_cast<long>(_nums[i + 1]) - static_cast<long>(_nums[i]));
+		long eval = std::abs(static_cast<long>(_nums[i + 1]) - static_cast<long>(_nums[i]));
 		if (ret > eval)
 			ret = eval;
 	}
