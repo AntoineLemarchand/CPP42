@@ -58,8 +58,27 @@ int main(int, char**)
 	A[2] = " !";
 	A[3] = "\n";
 	A[4] = "My size is ";
+	try
+	{
+		A[6] = "wrong";
+	}
+	catch (Array<std::string>::OutOfBound& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 
 	std::cout << A[0] << A[1] << A[2] << A[3] << A[4] << A.size() << std::endl;
+	try
+	{
+		std::cout << A[6];
+	}
+	catch (Array<std::string>::OutOfBound& e)
+	{
+		std::cout << e.what();
+	}
+
+
+	std::cout << std::endl;
 
 	Array<int>B = Array<int>(3);
 	B[0] = 21;
@@ -70,7 +89,7 @@ int main(int, char**)
 
 	try
 	{
-		(void)B[3];
+		(void)B[-1];
 	}
 	catch (Array<int>::OutOfBound& e)
 	{

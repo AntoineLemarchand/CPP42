@@ -1,14 +1,19 @@
 #include <iostream>
 #include "iter.hpp"
 
-void divide(float& f)
+void	divide(float& f)
 {
 	f = f / 2;
 }
 
-void putWord(std::string& s)
+void	putWord(std::string& s)
 {
 	std::cout << s;
+}
+
+void	putInt(int& i)
+{
+	std::cout << i;
 }
 
 int	main( void )
@@ -21,4 +26,7 @@ int	main( void )
 	std::cout << test[0] << ' '  << test[1] << ' ' << test[2] << std::endl;
 	::iter<float>(test, 3, divide);
 	std::cout << test[0] << ' '  << test[1] << ' ' << test[2] << std::endl;
+
+	int	empty[] = {};
+	::iter<int>(empty, 0, putInt);
 }
