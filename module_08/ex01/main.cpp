@@ -44,5 +44,24 @@ int main()
 	std::cout << "size:" << sp3.getSize() << std::endl;
 	std::cout << "shortest span: " << sp3.shortestSpan() << std::endl;
 	std::cout << "longest span: " << sp3.longestSpan() << std::endl;
+
+	Span empty = Span(2);
+	try
+	{
+		std::cout << empty.shortestSpan() << std::endl;
+	}
+	catch (...)
+	{
+		std::cout << "Not enough values" << std::endl;
+	}
+	empty.addNumber(3);
+	try
+	{
+		std::cout << empty.longestSpan() << std::endl;
+	}
+	catch (...)
+	{
+		std::cout << "Not enough values" << std::endl;
+	}
 	return 0;
 }

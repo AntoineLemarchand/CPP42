@@ -11,6 +11,7 @@ int main( void )
 	test.push_back(42);
 	test.push_back(1337);
 
+
 	try
 	{
 		(void)easyfind(test, 21);
@@ -21,4 +22,14 @@ int main( void )
 	}
 	std::cout << *easyfind(test, 4) << *easyfind(test, 2) << std::endl;
 	std::cout << *easyfind(test, 10) << *easyfind(test, 1337) << std::endl;
+
+	std::vector<float>	test2;
+	try
+	{
+		std::cout << *easyfind(test2, 6) << std::endl;
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << "empty vector" << std::endl;
+	}
 }

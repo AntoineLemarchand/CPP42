@@ -65,7 +65,7 @@ int main()
 	}
 	std::list<int> s2(lst);
 
-	std::cout << "━━━ copy of stack ━━━" << std::endl;
+	std::cout << "━━━ Other ━━━" << std::endl;
 	MutantStack<int> mstack2 = mstack;
 	MutantStack<int>::iterator it3 = mstack.begin();
 	MutantStack<int>::iterator ite3 = mstack.end();
@@ -76,5 +76,8 @@ int main()
 		std::cout << *it3 << std::endl;
 		++it3;
 	}
+
+	MutantStack<double> empty;
+	std::cout << (empty.begin() == empty.end()) << std::endl;
 	return 0;
 }

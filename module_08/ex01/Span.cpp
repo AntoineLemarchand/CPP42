@@ -52,7 +52,7 @@ void	Span::addNumber( std::vector<int>::iterator begin, std::vector<int>::iterat
 
 unsigned int	Span::shortestSpan( void ) const
 {
-	if (_size <= 1)
+	if (_size <= 1 || _nums.size() <= 1)
 		throw std::exception();
 	long ret = std::abs(static_cast<long>(_nums[0]) - static_cast<long>(_nums[1]));
 	for (unsigned int i = 0; i < _nums.size() - 1; i++)
@@ -66,7 +66,7 @@ unsigned int	Span::shortestSpan( void ) const
 
 unsigned int	Span::longestSpan( void ) const
 {
-	if (_size <= 1)
+	if (_size <= 1 || _nums.size() <= 1)
 		throw std::exception();
 	double max = *std::max_element(_nums.begin(), _nums.end());
 	double min = *std::min_element(_nums.begin(), _nums.end());
